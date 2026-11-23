@@ -1,0 +1,22 @@
+{
+  "name": "Ciências em 3D · Fotossíntese",
+  "short_name": "Ciências 3D",
+  "description": "Simuladores 3D de Ciências para o Ensino Fundamental: a fotossíntese, da planta inteira à clorofila.",
+  "lang": "pt-BR",
+  "id": "./",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f2a1c",
+  "theme_color": "#1f5135",
+  "categories": ["education", "science"],
+  "icons": [
+    { "src": "icones/icone-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icones/icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icones/icone-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Fotossíntese em 3D", "short_name": "Fotossíntese", "url": "./fotossintese.html", "icons": [{ "src": "icones/icone-192.png", "sizes": "192x192" }] }
+  ]
+}

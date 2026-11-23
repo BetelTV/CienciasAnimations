@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fotossíntese · da planta à clorofila</title>
+<link rel="stylesheet" href="estilo.css">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1f5135">
+<link rel="icon" type="image/png" href="icones/favicon-32.png">
+<link rel="apple-touch-icon" href="icones/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Ciências 3D">
+<script src="app.js" defer></script>
+<script>window.CFG = /*CONFIG*/{};</script>
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.min.js", "three/addons/": "./vendor/addons/" } }</script>
+</head>
+<body>
+<header>
+  <h1>Fotossíntese em 3D</h1>
+  <nav><a href="index.html">Início</a><a class="atual" href="fotossintese.html">Fotossíntese</a></nav>
+</header>
+
+<div class="barra">
+  <div class="grupo">
+    <button id="play" class="prim">⏸ Pausar</button>
+  </div>
+  <div class="grupo">
+    <label title="Quanta luz chega à planta">☀️ Luz do Sol <input id="luz" type="range" min="0" max="100" value="100"><output id="luzV">100%</output></label>
+    <label title="Quanta água há no solo">💧 Água no solo <input id="agua" type="range" min="0" max="100" value="100"><output id="aguaV">100%</output></label>
+    <label title="Quanto gás carbônico há no ar">🌫️ Gás carbônico no ar <input id="co2" type="range" min="0" max="100" value="100"><output id="co2V">100%</output></label>
+  </div>
+  <div class="grupo">
+    <label><input type="checkbox" id="vCaminhos" checked> Mostrar os caminhos</label>
+    <label><input type="checkbox" id="vNomes" checked> Nomes das partes</label>
+    <label data-so="planta"><input type="checkbox" id="vRaiox" checked> Caule e raízes transparentes</label>
+    <label><input type="checkbox" id="vGirar"> Girar sozinho</label>
+  </div>
+</div>
+
+<div class="palco">
+  <div class="cena" id="cena">
+    <nav class="trilha" id="trilha" aria-label="Níveis do zoom"></nav>
+    <button class="voltar" id="voltar" hidden>⟵ Voltar</button>
+    <div class="cantoEsq">
+      <div class="legenda" id="legenda"></div>
+      <div class="medidor" id="medidor">
+        <div class="topo"><span>Fotossíntese</span><span id="taxaV">100%</span></div>
+        <div class="trilho"><div class="enche" id="taxaBarra"></div></div>
+        <div class="msg" id="taxaMsg"></div>
+      </div>
+    </div>
+    <div class="equacao" id="equacao" title="Clique para alternar entre palavras e símbolos"></div>
+    <div class="veu" id="veu"></div>
+    <div class="aviso" id="aviso"></div>
+  </div>
+  <aside class="painel" id="painel"></aside>
+</div>
+
+<p class="nota">Arraste para girar, use a roda do mouse (ou dois dedos) para aproximar e clique nas partes destacadas para dar zoom.
+Os controles de luz, água e gás carbônico valem para todos os níveis. Atalhos pelo endereço: <code>fotossintese.html#nivel=folha&amp;agua=20</code>.</p>
+
+<script type="module" src="fotossintese.js"></script>
+</body>
+</html>

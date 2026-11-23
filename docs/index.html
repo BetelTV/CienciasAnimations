@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ciências em 3D · Matheus Fagioli</title>
+<meta name="description" content="Simuladores 3D de Ciências para o Ensino Fundamental. Fotossíntese: uma viagem de zoom da planta inteira até a clorofila.">
+<link rel="stylesheet" href="estilo.css">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0f2a1c">
+<link rel="icon" type="image/png" href="icones/favicon-32.png">
+<link rel="apple-touch-icon" href="icones/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Ciências 3D">
+<script src="app.js" defer></script>
+<style>
+  :root { --mata:#0f2a1c; --mata2:#173f2a; --folha:#7ed65a; --sol:#ffcf5a; --texto:#e4f2e6; --suave:#a9c4b0; --linha:rgba(170,230,180,.18); --cartao:rgba(18,48,32,.75); }
+  body.inicio { background: radial-gradient(ellipse at 75% -10%, #2e6b45 0%, var(--mata2) 38%, var(--mata) 78%) fixed; color: var(--texto); min-height: 100vh; }
+  .inicio header { background: rgba(8,24,15,.55); backdrop-filter: blur(6px); border-bottom: 1px solid var(--linha); }
+  .inicio header nav a { border-color: var(--linha); }
+  .inicio header nav a.atual { background: var(--folha); color: #0d2414; }
+  main { max-width: 1120px; margin: 0 auto; padding: 0 16px 40px; }
+  .heroi { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: center; padding: 52px 0 30px; }
+  .selo { display: inline-flex; gap: 8px; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--folha); border: 1px solid rgba(126,214,90,.4); border-radius: 999px; padding: 5px 12px; }
+  .heroi h2 { font-size: clamp(2.1rem, 5vw, 3.4rem); line-height: 1.05; margin: 16px 0 14px;
+    background: linear-gradient(100deg, #fff 0%, #d9ffc4 45%, var(--sol) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .heroi p.lead { font-size: 1.08rem; line-height: 1.65; max-width: 560px; margin: 0 0 22px; }
+  .autor { display: flex; gap: 14px; align-items: center; padding: 14px 16px; border: 1px solid var(--linha); border-radius: 14px; background: rgba(10,30,18,.6); max-width: 560px; }
+  .autor .avatar { flex: none; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; color: #0d2414; background: radial-gradient(circle at 35% 30%, #eaffd9, var(--folha) 60%); }
+  .autor b { display: block; color: #fff; }
+  .autor span { font-size: .9rem; color: var(--suave); line-height: 1.45; }
+  .acoes { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+  .botao { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 11px 18px; border-radius: 10px; font-weight: 600; border: 1px solid var(--linha); color: var(--texto); background: rgba(20,56,36,.7); }
+  button.botao { font: inherit; font-weight: 600; cursor: pointer; }
+  .botao.prim { background: linear-gradient(135deg, var(--folha), #4fb33a); color: #0d2414; border-color: transparent; }
+  .botao[hidden], .dicaIos[hidden] { display: none; }
+  .dicaIos { margin: 14px 0 0; max-width: 560px; font-size: .88rem; color: var(--suave); border: 1px dashed var(--linha); border-radius: 12px; padding: 10px 14px; }
+  .ilustra { width: 100%; max-width: 420px; justify-self: center; }
+  .ilustra .p { animation: subir 3s linear infinite; }
+  .ilustra .g { animation: descer 3.6s linear infinite; }
+  .ilustra .s { animation: pulsar 4s ease-in-out infinite; transform-origin: 330px 70px; }
+  @keyframes subir { from { transform: translateY(0); opacity: 0 } 15% { opacity: 1 } 85% { opacity: 1 } to { transform: translateY(-190px); opacity: 0 } }
+  @keyframes descer { from { transform: translateY(0); opacity: 0 } 15% { opacity: 1 } 85% { opacity: 1 } to { transform: translateY(170px); opacity: 0 } }
+  @keyframes pulsar { 50% { transform: scale(1.08) } }
+  h3.secao { font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--folha); margin: 26px 0 14px; display: flex; align-items: center; gap: 12px; }
+  h3.secao::after { content: ""; flex: 1; height: 1px; background: var(--linha); }
+  .cartoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .cartao { display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 18px; overflow: hidden; border: 1px solid var(--linha); background: var(--cartao); transition: transform .2s, border-color .2s; }
+  a.cartao:hover { transform: translateY(-3px); border-color: rgba(126,214,90,.55); }
+  .cartao .corpo { padding: 18px 20px 20px; }
+  .cartao .num { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--sol); }
+  .cartao h4 { margin: 4px 0 8px; font-size: 1.3rem; color: #fff; }
+  .cartao p { margin: 0 0 10px; color: var(--suave); line-height: 1.55; }
+  .cartao ol { margin: 0; padding-left: 20px; display: grid; gap: 4px; font-size: .92rem; }
+  .cartao li span { color: var(--suave); font-size: .82rem; }
+  .cartao .ir { margin-top: 14px; font-weight: 600; color: var(--folha); }
+  .cartao.breve { opacity: .7; border-style: dashed; }
+  .bloco { border: 1px solid var(--linha); border-radius: 16px; padding: 18px 20px; background: rgba(10,30,18,.55); }
+  .bloco h4 { margin: 0 0 8px; color: #fff; }
+  .bloco p, .bloco li { color: var(--suave); line-height: 1.6; font-size: .93rem; }
+  .bloco b { color: var(--texto); }
+  .bloco code { font-size: .8rem; background: rgba(255,255,255,.07); color: #d9ffc4; padding: 2px 6px; border-radius: 5px; }
+  .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  footer { text-align: center; color: var(--suave); font-size: .82rem; padding: 26px 16px 34px; border-top: 1px solid var(--linha); }
+  @media (max-width: 820px) { .heroi { grid-template-columns: 1fr; padding-top: 28px; } .ilustra { max-width: 300px; order: -1; } .duas { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .ilustra * { animation: none !important; } }
+</style>
+</head>
+<body class="inicio">
+<header>
+  <h1>Ciências em 3D</h1>
+  <nav><a class="atual" href="index.html">Início</a><a href="fotossintese.html">Fotossíntese</a></nav>
+</header>
+<main>
+  <section class="heroi">
+    <div>
+      <span class="selo">🌱 Ciências · Ensino Fundamental</span>
+      <h2>Fotossíntese:<br>da planta à clorofila</h2>
+      <p class="lead">Uma viagem de zoom por dentro de uma planta. Veja a água subir das raízes, o gás carbônico entrar pelas folhas
+      e a glicose ser produzida e levada até os frutos. Depois entre na folha, na célula e no cloroplasto. Mude a luz, a água
+      e o gás carbônico e descubra o que limita a fotossíntese.</p>
+      <div class="autor">
+        <div class="avatar" aria-hidden="true">MF</div>
+        <div><b>Matheus Fagioli</b><span>Professor de Ciências · Licenciatura em Ciências Naturais e Matemática.
+        Simuladores feitos para as aulas do 6º ano.</span></div>
+      </div>
+      <div class="acoes">
+        <a class="botao prim" href="fotossintese.html">🌿 Abrir o simulador</a>
+        <button class="botao" data-instalar hidden>📲 Instalar o app</button>
+      </div>
+      <p class="dicaIos" data-dica-ios hidden>📲 <b>Para instalar no iPhone ou iPad:</b> no Safari, toque em <b>Compartilhar</b> e depois em
+      <b>Adicionar à Tela de Início</b>. O app funciona mesmo sem internet.</p>
+    </div>
+    <svg class="ilustra" viewBox="0 0 400 400" role="img" aria-label="Uma árvore com água subindo pelo caule e glicose descendo">
+      <g class="s"><circle cx="330" cy="70" r="30" fill="#ffd646"/><circle cx="330" cy="70" r="46" fill="#ffd646" opacity=".18"/></g>
+      <rect x="40" y="290" width="320" height="90" rx="14" fill="#6b4423" opacity=".55"/>
+      <rect x="40" y="284" width="320" height="10" rx="5" fill="#6cbf4a"/>
+      <path d="M200 300 C 190 330, 150 340, 120 370 M200 300 C 210 335, 250 345, 285 372 M200 300 L 200 372" stroke="#d8b48a" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <rect x="188" y="150" width="24" height="145" rx="8" fill="#7a4a2a"/>
+      <circle cx="200" cy="135" r="78" fill="#3f9e3a"/><circle cx="145" cy="150" r="52" fill="#4caf50"/><circle cx="258" cy="148" r="54" fill="#2e8b3a"/><circle cx="205" cy="80" r="50" fill="#56b04a"/>
+      <circle cx="150" cy="195" r="11" fill="#e53935"/><circle cx="255" cy="200" r="11" fill="#e53935"/><circle cx="215" cy="190" r="10" fill="#e53935"/>
+      <g fill="#4aa3ff"><circle class="p" cx="196" cy="300" r="5"/><circle class="p" cx="196" cy="300" r="5" style="animation-delay:-1s"/><circle class="p" cx="196" cy="300" r="5" style="animation-delay:-2s"/></g>
+      <g fill="#ffa41f"><circle class="g" cx="205" cy="125" r="5"/><circle class="g" cx="205" cy="125" r="5" style="animation-delay:-1.2s"/><circle class="g" cx="205" cy="125" r="5" style="animation-delay:-2.4s"/></g>
+    </svg>
+  </section>
+
+  <h3 class="secao">Simuladores</h3>
+  <div class="cartoes">
+    <a class="cartao" href="fotossintese.html">
+      <div class="corpo">
+        <span class="num">Disponível · etapa 1</span>
+        <h4>Fotossíntese em 3D</h4>
+        <p>Do lado de fora para dentro, em níveis de zoom:</p>
+        <ol>
+          <li>Planta inteira <span>raízes, caule, folhas, frutos, xilema e floema</span></li>
+          <li>Por dentro da folha <span>epiderme, parênquimas, nervura e estômatos</span></li>
+          <li>Célula vegetal <span>parede, membrana, vacúolo, núcleo e cloroplastos</span></li>
+        </ol>
+        <div class="ir">Explorar →</div>
+      </div>
+    </a>
+    <div class="cartao breve">
+      <div class="corpo">
+        <span class="num">Em breve · etapa 2</span>
+        <h4>Até a clorofila</h4>
+        <ol start="4">
+          <li>O cloroplasto <span>tilacoides, grana e estroma</span></li>
+          <li>A membrana do tilacoide <span>a luz quebra a água e libera oxigênio</span></li>
+          <li>A molécula de clorofila <span>o magnésio que veio das raízes</span></li>
+        </ol>
+        <p style="margin-top:10px">E o caminho de volta: a glicose montada no estroma até chegar ao fruto.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="secao">Para o professor</h3>
+  <div class="duas">
+    <div class="bloco">
+      <h4>Habilidades da BNCC</h4>
+      <p><b>EF06CI05</b> – Explicar a organização básica das células e seu papel como unidade estrutural e funcional dos seres vivos.</p>
+      <p><b>EF06CI06</b> – Concluir, com base na análise de ilustrações e/ou modelos (físicos ou digitais), que os organismos são um complexo arranjo de sistemas com diferentes níveis de organização.</p>
+    </div>
+    <div class="bloco">
+      <h4>Atalhos para preparar a aula</h4>
+      <ul>
+        <li><code>fotossintese.html#nivel=folha&amp;agua=15</code> folha com pouca água (estômatos fechados)</li>
+        <li><code>fotossintese.html#luz=0</code> a planta no escuro</li>
+        <li><code>fotossintese.html#nivel=celula&amp;co2=30</code> célula com pouco gás carbônico</li>
+        <li><code>fotossintese.html#nomes=0</code> sem os nomes das partes (bom para avaliação)</li>
+      </ul>
+    </div>
+  </div>
+</main>
+<footer><b>Ciências em 3D</b> · Matheus Fagioli · feito com Three.js · funciona offline depois de aberto uma vez</footer>
+</body>
+</html>
