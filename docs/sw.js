@@ -2,7 +2,7 @@
 // Estratégia: responde com a cópia guardada (rápido e offline) e, em paralelo, busca a versão nova na rede
 // e atualiza a cópia. Assim, depois de publicar mudanças, o app se atualiza sozinho na abertura seguinte.
 // Ao acrescentar um arquivo novo ao site, inclua-o em ARQUIVOS e mude a VERSAO.
-const VERSAO = "ciencias-3d-v1";
+const VERSAO = "ciencias-3d-v2";
 const ARQUIVOS = [
   "./", "index.html", "fotossintese.html", "fotossintese.js", "estilo.css", "app.js", "manifest.webmanifest",
   "vendor/three.module.min.js", "vendor/addons/controls/OrbitControls.js", "vendor/addons/renderers/CSS2DRenderer.js",

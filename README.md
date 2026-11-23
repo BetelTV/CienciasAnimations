@@ -15,9 +15,16 @@ valem para todos os níveis, e o medidor mostra qual deles está limitando a fot
 | 1. Planta | raízes, caule (com xilema e floema), folhas, frutos e o Sol; a folha murcha com pouca água | ✅ etapa 1 |
 | 2. Folha | cutícula, epidermes, parênquima paliçádico e lacunoso, nervura e estômatos que abrem e fecham | ✅ etapa 1 |
 | 3. Célula | parede, membrana, vacúolo, núcleo, mitocôndrias e cloroplastos em movimento (ciclose) | ✅ etapa 1 |
-| 4. Cloroplasto | tilacoides, grana e estroma | etapa 2 |
-| 5. Tilacoide | a luz quebra a água e libera o oxigênio | etapa 2 |
-| 6. Clorofila | a molécula, com o magnésio no centro | etapa 2 |
+| 4. Cloroplasto | tilacoides, estroma e as "baterias" de energia (montagem da glicose para pouco depois da luz) | ✅ etapa 2 |
+| 5. Tilacoide | antenas de clorofila, quebra da água, revezamento da energia e a turbina (ATP sintase) | ✅ etapa 2 |
+| 6. Clorofila | a molécula átomo por átomo; absorve vermelho e azul, reflete o verde | ✅ etapa 2 |
+
+Recursos extras:
+
+- **Cor da luz** (branca, vermelha, azul, verde): com luz verde a fotossíntese quase para.
+- **Mais detalhes**: liga os nomes científicos (fotossistemas, ATP/NADPH, ciclo de Calvin, mesófilo...) e um texto extra no painel. Desligado por padrão.
+- **🍎 Caminho de volta**: a glicose sai do cloroplasto e vai até o fruto, com a câmera acompanhando. Na **volta guiada**, o aluno clica nos pontos brilhantes para levar a glicose.
+- **🎬 Viagem completa**: percorre todos os níveis sozinho, com legendas, e termina no caminho de volta. Bom para projetar.
 
 Habilidades da BNCC:
 
@@ -51,6 +58,8 @@ Use `python gerar_site.py --servir` ou o endereço do GitHub Pages.
 - `fotossintese.html#nivel=folha&agua=15` folha com pouca água (estômatos fechados)
 - `fotossintese.html#luz=0` a planta no escuro
 - `fotossintese.html#nivel=celula&co2=30` célula com pouco gás carbônico
+- `fotossintese.html#nivel=clorofila&cor=verde` a clorofila com luz verde
+- `fotossintese.html#detalhes=1` com os nomes científicos
 - `fotossintese.html#nomes=0` sem os nomes das partes (bom para avaliação)
 
 ## Instalar como app

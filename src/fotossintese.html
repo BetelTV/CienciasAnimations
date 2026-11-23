@@ -29,12 +29,20 @@
     <label title="Quanta luz chega à planta">☀️ Luz do Sol <input id="luz" type="range" min="0" max="100" value="100"><output id="luzV">100%</output></label>
     <label title="Quanta água há no solo">💧 Água no solo <input id="agua" type="range" min="0" max="100" value="100"><output id="aguaV">100%</output></label>
     <label title="Quanto gás carbônico há no ar">🌫️ Gás carbônico no ar <input id="co2" type="range" min="0" max="100" value="100"><output id="co2V">100%</output></label>
+    <label title="A cor da luz que ilumina a planta">🌈 Cor da luz <select id="corLuz"></select></label>
   </div>
   <div class="grupo">
     <label><input type="checkbox" id="vCaminhos" checked> Mostrar os caminhos</label>
     <label><input type="checkbox" id="vNomes" checked> Nomes das partes</label>
     <label data-so="planta"><input type="checkbox" id="vRaiox" checked> Caule e raízes transparentes</label>
     <label><input type="checkbox" id="vGirar"> Girar sozinho</label>
+    <label title="Mostra os nomes científicos e um texto extra no painel"><input type="checkbox" id="vDetalhes"> Mais detalhes (nomes científicos)</label>
+  </div>
+  <div class="grupo">
+    <span>Viagens:</span>
+    <button id="bViagem" title="Percorre todos os níveis sozinho, com legendas. Bom para projetar">🎬 Viagem completa</button>
+    <button id="bVoltaAuto" title="A glicose sai do cloroplasto e vai até o fruto">🍎 Caminho de volta</button>
+    <button id="bVoltaGuiada" title="O aluno leva a glicose até o fruto, clicando nos pontos brilhantes">🖱️ Volta guiada</button>
   </div>
 </div>
 
@@ -51,6 +59,11 @@
       </div>
     </div>
     <div class="equacao" id="equacao" title="Clique para alternar entre palavras e símbolos"></div>
+    <div class="roteiro" id="roteiro" hidden>
+      <p id="roteiroTexto"></p>
+      <p class="pedido" id="roteiroPedido" hidden></p>
+      <button id="roteiroParar">⏹ Parar a viagem</button>
+    </div>
     <div class="veu" id="veu"></div>
     <div class="aviso" id="aviso"></div>
   </div>
@@ -58,7 +71,7 @@
 </div>
 
 <p class="nota">Arraste para girar, use a roda do mouse (ou dois dedos) para aproximar e clique nas partes destacadas para dar zoom.
-Os controles de luz, água e gás carbônico valem para todos os níveis. Atalhos pelo endereço: <code>fotossintese.html#nivel=folha&amp;agua=20</code>.</p>
+Os controles de luz, água e gás carbônico valem para todos os níveis. Atalhos pelo endereço: <code>fotossintese.html#nivel=folha&amp;agua=20</code>, <code>#nivel=clorofila&amp;cor=verde</code>, <code>#detalhes=1</code>.</p>
 
 <script type="module" src="fotossintese.js"></script>
 </body>
