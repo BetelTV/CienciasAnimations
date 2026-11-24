@@ -2,9 +2,10 @@
 // Estratégia: responde com a cópia guardada (rápido e offline) e, em paralelo, busca a versão nova na rede
 // e atualiza a cópia. Assim, depois de publicar mudanças, o app se atualiza sozinho na abertura seguinte.
 // Ao acrescentar um arquivo novo ao site, inclua-o em ARQUIVOS e mude a VERSAO.
-const VERSAO = "ciencias-3d-v2";
+const VERSAO = "ciencias-3d-v3";
 const ARQUIVOS = [
   "./", "index.html", "fotossintese.html", "fotossintese.js", "estilo.css", "app.js", "manifest.webmanifest",
+  "deriva.html", "deriva.js", "deriva.css", "reconstrucao.js", "continentes.js", "vendor/d3-geo.module.js",
   "vendor/three.module.min.js", "vendor/addons/controls/OrbitControls.js", "vendor/addons/renderers/CSS2DRenderer.js",
   "vendor/addons/geometries/RoundedBoxGeometry.js",
   "icones/icone-192.png", "icones/icone-512.png", "icones/icone-maskable-512.png", "icones/apple-touch-icon.png", "icones/favicon-32.png",

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deriva dos continentes · a Terra por dentro e por fora</title>
+<link rel="stylesheet" href="estilo.css">
+<link rel="stylesheet" href="deriva.css">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1f5135">
+<link rel="icon" type="image/png" href="icones/favicon-32.png">
+<link rel="apple-touch-icon" href="icones/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Ciências 3D">
+<script src="app.js" defer></script>
+<script>window.CFG = /*CONFIG_DERIVA*/{};</script>
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.min.js", "three/addons/": "./vendor/addons/" } }</script>
+</head>
+<body class="deriva">
+<header>
+  <h1>Deriva dos continentes</h1>
+  <nav><a href="index.html">Início</a><a href="fotossintese.html">Fotossíntese</a><a class="atual" href="deriva.html">Deriva dos continentes</a></nav>
+</header>
+
+<div class="barra">
+  <div class="grupo" data-so="terra conveccao">
+    <button id="play" class="prim">▶ Animar</button>
+    <label title="Quantos milhões de anos atrás">🕰️ Tempo <input id="tempo" type="range" min="0" max="300" step="1" value="300"><output id="tempoV">hoje</output></label>
+  </div>
+  <div class="grupo" data-so="terra">
+    <span>Evidências:</span>
+    <label><input type="checkbox" id="vFosseis" checked> 🦴 Fósseis</label>
+    <label><input type="checkbox" id="vGeleiras"> 🧊 Geleiras</label>
+    <label><input type="checkbox" id="vMontanhas"> ⛰️ Montanhas e rochas</label>
+    <label><input type="checkbox" id="vCarvao"> ⚫ Carvão</label>
+    <button id="bEncaixe" title="Junta a América do Sul com a África, como em um quebra-cabeça">🧩 Encaixar</button>
+  </div>
+  <div class="grupo" data-so="terra">
+    <label><input type="checkbox" id="vCores" checked> Colorir continentes</label>
+    <label><input type="checkbox" id="vCampinas" checked> 📍 Campinas</label>
+  </div>
+  <div class="grupo" data-so="camadas">
+    <label title="A crosta e a litosfera são tão finas que, em escala real, quase não aparecem"><input type="checkbox" id="vAumentar" checked> Engrossar a crosta (fora de escala)</label>
+  </div>
+  <div class="grupo" data-so="conveccao">
+    <label><input type="checkbox" id="vCorrentes" checked> 🔄 Correntes de convecção</label>
+    <label><input type="checkbox" id="vParticulas" checked> Partículas do manto</label>
+    <label><input type="checkbox" id="vFaixas" checked> 🧲 Faixas magnéticas</label>
+  </div>
+  <div class="grupo">
+    <label><input type="checkbox" id="vNomes" checked> Nomes</label>
+    <label><input type="checkbox" id="vGirar"> Girar sozinho</label>
+    <label title="Mostra os termos científicos e um texto extra no painel"><input type="checkbox" id="vDetalhes"> Mais detalhes</label>
+  </div>
+  <div class="grupo">
+    <button id="bViagem" title="Percorre a história e os níveis sozinho, com legendas. Bom para projetar">🎬 Viagem guiada</button>
+    <button id="bHistoria" title="De Ortelius (1596) à tectônica de placas">📜 Linha do tempo das ideias</button>
+  </div>
+</div>
+
+<div class="palco">
+  <div class="cena" id="cena">
+    <nav class="trilha" id="trilha" aria-label="Níveis"></nav>
+    <button class="voltar" id="voltar" hidden>⟵ Voltar</button>
+    <div class="relogio" id="relogio" hidden>
+      <div class="idade" id="idade"></div>
+      <div class="marco" id="marco"></div>
+    </div>
+    <div class="regua" id="regua" hidden></div>
+    <div class="historia" id="historia" hidden>
+      <div class="topoHist"><b>📜 Linha do tempo das ideias</b><button id="fecharHist">✕ Fechar</button></div>
+      <div class="cartoesHist" id="cartoesHist"></div>
+    </div>
+    <div class="roteiro" id="roteiro" hidden>
+      <p id="roteiroTexto"></p>
+      <button id="roteiroParar">⏹ Parar a viagem</button>
+    </div>
+    <div class="veu" id="veu"></div>
+    <div class="aviso" id="aviso"></div>
+  </div>
+  <aside class="painel" id="painel"></aside>
+</div>
+
+<p class="nota">Arraste para girar e use a roda do mouse (ou dois dedos) para aproximar. Na Terra, clique nos pontos dos fósseis.
+Atalhos pelo endereço: <code>deriva.html#t=270&amp;fossil=mesosaurus</code>, <code>#nivel=camadas</code>, <code>#nivel=conveccao&amp;t=0</code>, <code>#encaixe=1</code>.</p>
+
+<script type="module" src="deriva.js"></script>
+</body>
+</html>

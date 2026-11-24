@@ -1,7 +1,7 @@
 {
-  "name": "Ciências em 3D · Fotossíntese",
+  "name": "Ciências em 3D",
   "short_name": "Ciências 3D",
-  "description": "Simuladores 3D de Ciências para o Ensino Fundamental: a fotossíntese, da planta inteira à clorofila.",
+  "description": "Simuladores 3D de Ciências para o Ensino Fundamental: a fotossíntese, da planta inteira à clorofila, e a deriva dos continentes, da Pangeia à convecção do manto.",
   "lang": "pt-BR",
   "id": "./",
   "start_url": "./index.html",
@@ -17,6 +17,7 @@
     { "src": "icones/icone-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
   "shortcuts": [
-    { "name": "Fotossíntese em 3D", "short_name": "Fotossíntese", "url": "./fotossintese.html", "icons": [{ "src": "icones/icone-192.png", "sizes": "192x192" }] }
+    { "name": "Fotossíntese em 3D", "short_name": "Fotossíntese", "url": "./fotossintese.html", "icons": [{ "src": "icones/icone-192.png", "sizes": "192x192" }] },
+    { "name": "Deriva dos continentes", "short_name": "Deriva", "url": "./deriva.html", "icons": [{ "src": "icones/icone-192.png", "sizes": "192x192" }] }
   ]
 }
